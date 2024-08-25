@@ -2,7 +2,8 @@
 
 clone the repo by writing in terminal
 
-`git clone `
+`git clone  `
+
 open terminal in the root folder then write these commands
 
 ` docker-compose build`
