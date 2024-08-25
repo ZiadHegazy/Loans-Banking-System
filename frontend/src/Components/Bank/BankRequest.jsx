@@ -1,7 +1,7 @@
 import { Button, Table, TableCell,TableBody,TableHead,TableRow, Alert,TextField, IconButton, Typography } from "@mui/material"
 import "./Bank.css"
 import { useEffect, useState } from "react";
-import { approveLoanRequestAPI, createLoanRequestAPI, disapproveLoanRequestAPI, getBankLoanRequestsAPI, getLoanRequestsAPI } from "../APIs/loansAPI";
+import { approveLoanRequestAPI, createLoanRequestAPI, disapproveLoanRequestAPI, getBankLoanRequestsAPI, getLoanRequestsAPI, getTotalFundsAPI } from "../APIs/loansAPI";
 import { logout } from "../util";
 export function BankRequest(){
 
@@ -11,6 +11,15 @@ export function BankRequest(){
     const [success,setSuccess]=useState(false);
     const [message,setMessage]=useState("");
     const [id,setId]=useState(0);
+    const[totalFunds,setTotalFunds]=useState(0);
+
+    useEffect(()=>{
+        async function getTotalFunds(){
+            const response=await getTotalFundsAPI();
+            setTotalFunds(response.data);
+        }
+        getTotalFunds();
+    },[])
     const handleAcceptRequest=async(id)=>{
         setId(id);
         setRequestDiv(true);
@@ -79,6 +88,7 @@ export function BankRequest(){
                 <a className="selectedA">Loan Requests</a>
                 <a href="/bankFunds" className="normalA">Funds</a>
                 <a href="/bankLoans" className="normalA">Loans</a>
+                <label color="white">{"Total Funds Available: "+totalFunds}</label>
                 <Button onClick={()=>logout()} variant="contained"  className="logoutbtn">Logout</Button>
 
             </div>

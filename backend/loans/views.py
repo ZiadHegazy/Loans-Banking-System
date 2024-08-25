@@ -29,6 +29,7 @@ def getLoanDetails(request,token,id):
     except Exception as e:
         print(e)
         return Response({'message':"error", "data":"invalid token"})
+
 # ------------------------------- Customer APIs ----------------------------
 @api_view(['GET'])
 def getUserLoanRequests(request,token):
@@ -115,6 +116,21 @@ def getUserPayments(request,token):
     except Exception as e:
         return Response({'message':"error", "data":"invalid token"})
 # ------------------------------- Bank APIs ----------------------------
+
+@api_view(['GET'])
+def getTotalFunds(request,token):
+    try:
+        access_token = AccessToken(token)
+        user = access_token.get('custom_payload')
+        if(user.get('role') != 'bank'):
+            return Response({'message':"error", "data":"invalid role"})
+        funds = Funds.objects.all()
+        totalFunds = 0
+        for fund in funds:
+            totalFunds += fund.amount
+        return Response({"message":"success",'data': totalFunds})
+    except Exception as e:
+        return Response({'message':"error", "data":"invalid token"})
 
 @api_view(['GET'])
 def getFunds(request,token):

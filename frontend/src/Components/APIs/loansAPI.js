@@ -3,6 +3,8 @@ const api=process.env.API?process.env.API:'http://localhost:8000';
 
 //-------------------------Customer API-------------------------//
 
+
+
 export const getLoanRequestsAPI=async()=>{
 
     const response=await fetch(`${api}/loans/getUserLoanRequests/${localStorage.getItem("token")}`);
@@ -58,6 +60,10 @@ export const getUserPaymentsAPI=async()=>{
 // path('loans/bankGetLoans/<str:token>', getBankLoans),
 // path('loans/bankApproveLoan', approveLoanRequest),
 // path('loans/bankRejectLoan', disapproveLoanRequest),
+export const getTotalFundsAPI=async()=>{
+    const response=await fetch(`${api}/loans/bankTotalFunds/${localStorage.getItem("token")}`);
+    return await response.json();
+}
 
 export const getFundsAPI=async()=>{
     const response=await fetch(`${api}/loans/bankGetFunds/${localStorage.getItem("token")}`);

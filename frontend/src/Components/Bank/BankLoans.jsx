@@ -1,13 +1,22 @@
 import { Button, Table, TableCell,TableBody,TableHead,TableRow, Typography } from "@mui/material"
 import "./Bank.css"
 import { useEffect, useState } from "react";
-import { getBankLoansAPI, getUserLoansAPI } from "../APIs/loansAPI";
+import { getBankLoansAPI, getTotalFundsAPI, getUserLoansAPI } from "../APIs/loansAPI";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../util";
 export function BankLoans(){
     const navigate=useNavigate();
     const [loans,setLoans]=useState([]);
     const[currentPage,setCurrentPage]=useState(1);
+    const[totalFunds,setTotalFunds]=useState(0);
+
+    useEffect(()=>{
+        async function getTotalFunds(){
+            const response=await getTotalFundsAPI();
+            setTotalFunds(response.data);
+        }
+        getTotalFunds();
+    },[])
 
     useEffect(()=>{
         const token=localStorage.getItem("token");
@@ -23,6 +32,7 @@ export function BankLoans(){
                 <a href="/bankRequests" className="normalA">Loan Requests</a>
                 <a href="/bankFunds" className="normalA">Funds</a>
                 <a className="selectedA">Loans</a>
+                <label color="white">{"Total Funds Available: "+totalFunds}</label>
                 <Button onClick={()=>logout()} variant="contained"  className="logoutbtn">Logout</Button>
 
             </div>
