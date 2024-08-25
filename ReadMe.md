@@ -17,17 +17,17 @@ clone the repo by writing in terminal
 
 open new terminal for the frontend then
 
-`cd frontend
-npm install
-npm start`
+`cd frontend`
+`npm install`
+`npm start`
 
 open new terminal for the backend then
 
-`cd backend
-python -m venv venv
-venv/Scripts/activate
-pip install -r requirements.txt
-python manage.py runserver`
+`cd backend`
+`python -m venv venv`
+`venv/Scripts/activate`
+`pip install -r requirements.txt`
+`python manage.py runserver`
 
 
 
