@@ -1,0 +1,122 @@
+.mainCustomerHome{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.customerHomeHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 2vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #6482AD;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+   
+    >a:hover{
+        color: #E2DAD6;
+        transition: 0.5s;
+    }
+}
+.customerHomeBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    row-gap: 2vh;
+    width: 100%;
+}
+.normalA{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+.normalA:hover{
+    color: #E2DAD6;
+    transition: 0.5s;
+}
+.selectedA{
+    text-decoration: underline;
+    font-weight: bold;
+    color:white
+}
+.logoutbtn{
+    color: white;
+}
+.logoutbtn:hover{
+    color: #E2DAD6;
+    transition: 0.5s;
+}
+.requestDivBack{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+
+}
+.requestDivFront{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 2;
+    row-gap: 2vh;
+    position: relative;
+}
+.closeBtn{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+.tableDivCustomer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+    padding: 10px;
+    max-height: 66vh;
+    overflow-y: auto;
+}
+.tableCustomer{
+    width: 60%;
+    text-align: center;
+    background-color: white;
+    border: 1px solid #000;
+    border-collapse: collapse;
+
+    
+    >tr{
+        border-bottom: 1px solid black;
+        margin-bottom: 4vh;
+        
+    }
+    >th{
+        border-bottom: 1px solid black;
+        padding: 1vh 1vh 1vh 1vh;
+    }
+    
+}
+.pagingFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1vw;
+}
